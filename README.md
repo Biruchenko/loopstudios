@@ -15,7 +15,7 @@ This is a landing page for an interactive VR company that showcases what they of
 
 ### Links
 
-<!-- Add live link -->
+- https://biruchenko.github.io/loopstudios/
 
 ### Built with
 
