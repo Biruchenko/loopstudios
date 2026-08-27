@@ -1,0 +1,96 @@
+/* === Sr-only && Skip-link && No-scroll === */
+.sr-only {
+  position: absolute;
+  width: 0.0625rem;
+  height: 0.0625rem;
+  padding: 0;
+  margin: -0.0625rem;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link:focus {
+  position: absolute;
+  width: auto;
+  height: auto;
+  padding: 1rem;
+  margin: 0;
+  clip: auto;
+  white-space: normal;
+  background: var(--color-white);
+  color: var(--color-black);
+  z-index: 100;
+  top: 0;
+  left: 0;
+}
+
+.no-scroll {
+  position: fixed;
+  inset: 0;
+  padding-right: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* === Title === */
+.title {
+  font-family: var(--font-secondary);
+  font-weight: 300;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.title--lg {
+  font-size: clamp(2.5rem, 0.592rem + 8.142vw, 4.5rem); /* min: 40px, max: 72px */
+}
+.title--md {
+  font-size: clamp(2rem, 1.046rem + 4.071vw, 3rem); /* min: 32px, max: 48px */
+}
+.title--sm {
+  font-size: clamp(1.5rem, 0.929rem + 1.19vw, 2rem); /* min: 24px, max: 32px */
+}
+
+/* === Text === */
+.text p:not(:last-child) {
+  margin-bottom: 0.625rem;
+}
+
+/* === Button === */
+.button {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0.75rem;
+  min-width: 9.8125rem;
+  font-size: 0.875rem;
+  line-height: 1;
+  letter-spacing: 0.3125rem;
+  text-transform: uppercase;
+  color: var(--color-black);
+  border: 0.0625rem solid var(--color-black);
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+.button:is(:hover, :focus-visible) {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+/* === Image === */
+.object-fit {
+  overflow: hidden;
+}
+.object-fit img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
