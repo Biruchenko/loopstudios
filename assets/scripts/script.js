@@ -9,11 +9,19 @@ const menuBody = document.querySelector('.menu__body');
 const menuList = document.querySelector('.menu__list');
 const menuLinks = menuList.querySelectorAll('.menu__link');
 let menuScrollPosition = 0;
+const mediaMobile = window.matchMedia('(max-width: 47.9988rem)');
 
 if (menuBtn) {
 	menuBtn.addEventListener('click', () => {
 		toggleMenu();
 	});
+}
+
+function syncMenuInert() {
+	const isOpen = menuBody.classList.contains('open');
+	const hidden = mediaMobile.matches && !isOpen;
+	menuBody.inert = hidden;
+	menuBody.setAttribute('aria-hidden', hidden);
 }
 
 document.addEventListener('keydown', e => {
@@ -61,7 +69,8 @@ function toggleMenu() {
 	}
 	document.body.classList.toggle('no-scroll', menuBtn.classList.contains('open'));
 	document.body.style.top = menuBtn.classList.contains('open') ? -menuScrollPosition + 'px' : '';
-	menuBody.setAttribute('aria-hidden', !menuBody.classList.contains('open'));
+	// menuBody.setAttribute('aria-hidden', !menuBody.classList.contains('open'));
+	syncMenuInert();
 	if (!menuBtn.classList.contains('open')) {
 		window.scrollTo(0, menuScrollPosition);
 	}
@@ -76,3 +85,8 @@ menuLinks.forEach(link => {
 		}
 	});
 });
+
+// Keep state correct when the user resizes across the breakpoint
+mediaMobile.addEventListener('change', syncMenuInert);
+// Set the correct initial state on load (mobile = closed = inert)
+syncMenuInert();
